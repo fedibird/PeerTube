@@ -1,19 +1,23 @@
 extends ../common/greetings
 
 block title
-  | Email verification
+  | Email認証
 
 block content
   if isRegistrationRequest
-    p You just requested an account on #[a(href=WEBSERVER.URL) #{instanceName}].
+    p あなたは今 #[a(href=WEBSERVER.URL) #{instanceName}] にアカウントをリクエストしました。
   else
-    p You just created an account on #[a(href=WEBSERVER.URL) #{instanceName}].
+    p あなたは今 #[a(href=WEBSERVER.URL) #{instanceName}] にアカウントを作成しました。
 
   if isRegistrationRequest
-    p To complete your registration request you must verify your email first!
+    p 登録リクエストを完了するには、まず電子メールを確認する必要があります！
   else
-    p To start using your account you must verify your email first!
+    p アカウントの使用を開始するには、まず電子メールを確認する必要があります！
 
-  p Please follow #[a(href=verifyEmailUrl) this link] to verify this email belongs to you.
-  p If you can't see the verification link above you can use the following link #[a(href=verifyEmailUrl) #{verifyEmailUrl}]
-  p If you are not the person who initiated this request, please ignore this email.
+  p.
+    アカウントを使用するには、まずメールアドレスを認証する必要があります。
+    #[a(href=verifyEmailUrl) このリンク] をたどって、このメールアドレスがあなたのものであることを認証してください。
+  p.
+    もし上の認証リンクが表示されない場合は、次のリンク #[a(href=verifyEmailUrl) #{verifyEmailUrl}] をご利用ください。
+  p.
+    このリクエストを開始したのがあなたでない場合、このメールを無視してください。

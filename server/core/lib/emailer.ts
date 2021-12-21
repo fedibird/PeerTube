@@ -98,7 +98,7 @@ class Emailer {
     const emailPayload: EmailPayload = {
       template: 'verify-email',
       to: [ to ],
-      subject: `Verify your email on ${CONFIG.INSTANCE.NAME}`,
+      subject: `${CONFIG.INSTANCE.NAME} でメールアドレスを認証してください`,
       locals: {
         username,
         verifyEmailUrl,
