@@ -417,10 +417,16 @@ async function addVideoInPlaylist (req: express.Request, res: express.Response) 
   const video = res.locals.videoThumbnails
 
   const playlistElement = await sequelizeTypescript.transaction(async t => {
-    const position = await VideoPlaylistElementModel.getNextPositionOf(videoPlaylist.id, t)
+    // const position = await VideoPlaylistElementModel.getNextPositionOf(videoPlaylist.id, t)
+    await VideoPlaylistElementModel.increasePositionOf({
+      videoPlaylistId: videoPlaylist.id,
+      fromPosition: 1,
+      by: 1,
+      transaction: t
+    })
 
     const playlistElement = await VideoPlaylistElementModel.create({
-      position,
+      position: 1,
       startTimestamp: body.startTimestamp || null,
       stopTimestamp: body.stopTimestamp || null,
       videoPlaylistId: videoPlaylist.id,
